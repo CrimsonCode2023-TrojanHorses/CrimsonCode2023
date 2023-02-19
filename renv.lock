@@ -315,6 +315,28 @@
         "xtable"
       ]
     },
+    "shinybrowser": {
+      "Package": "shinybrowser",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0f3fec942ab67d497e1d89f71d99b637",
+      "Requirements": [
+        "shiny"
+      ]
+    },
+    "shinyjs": {
+      "Package": "shinyjs",
+      "Version": "2.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "802e4786b353a4bb27116957558548d5",
+      "Requirements": [
+        "digest",
+        "jsonlite",
+        "shiny"
+      ]
+    },
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7-1",
