@@ -1,4 +1,22 @@
 APP_PAGE_profile <- function(input, output, session) {
+  observeEvent(input$profile_settings, {
+    show("profile-settings")
+    hide("profile-saved")
+    hide("profile-mine")
+  })
+  
+  observeEvent(input$profile_saved, {
+    hide("profile-settings")
+    show("profile-saved")
+    hide("profile-mine")
+  })
+  
+  observeEvent(input$profile_mine, {
+    hide("profile-settings")
+    hide("profile-saved")
+    show("profile-mine")
+  })
+  
   div(
     class = auto_mobile("content-responsive"),
     div(
@@ -24,14 +42,14 @@ APP_PAGE_profile <- function(input, output, session) {
         class = "profile-options",
         div(
           class = "profile-option-tabs",
-          span(class = "profile-option", "Settings"),
-          span(class = "profile-option", "Saved Recipes"),
-          span(class = "profile-option", "My Recipes")
+          a(class = "profile-option", onclick = shinyOnClick("profile_settings"), "Settings"),
+          a(class = "profile-option", onclick = shinyOnClick("profile_saved"), "Saved Recipes"),
+          a(class = "profile-option", onclick = shinyOnClick("profile_mine"), "My Recipes")
         ),
         div(
           id = "profile-settings",
           class = "profile-option-pane",
-          style = "height: 50vh;",
+          style = "height: 70vh;",
           div(
             class = "profile-settings-left",
             div(
@@ -54,6 +72,15 @@ APP_PAGE_profile <- function(input, output, session) {
               icon("shield"),
               "Security"
             )
+          ),
+          div(
+            id = "profile-settings-profile",
+            class = "profile-settings-right",
+            textInput("name", "Name", value = session$userData$name),
+            textInput("email", "Email", value = session$userData$email),
+            passwordInput("password", "Password", placeholder = "********"),
+            passwordInput("password", "Confirm Password", placeholder = "********"),
+            actionButton("submit", "Update Profile")
           )
         ),
         hide(div(
@@ -61,7 +88,7 @@ APP_PAGE_profile <- function(input, output, session) {
           class = "profile-option-pane"
         )),
         hide(div(
-          id = "profile-my",
+          id = "profile-mine",
           class = "profile-option-pane"
         ))
       )

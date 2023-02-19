@@ -29,6 +29,11 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  session$userData$username <- "chezbigjohn"
+  session$userData$name <- "John Doe"
+  session$userData$email <- "johndoe@email.com"
+  session$userData$page <- "home"
+  
   ui_state <- reactiveValues(left_sidebar = "open", right_sidebar = "open")
   
   output$active_page <- renderUI(APP_PAGE_homepage(input, output, session))
@@ -49,6 +54,17 @@ server <- function(input, output, session) {
     }
   )
   
+  observeEvent(input$search, {
+    if (session$userData$page == "home") {
+      runjs("$('#active_left_sidebar div').addClass('show')")
+    } else {
+      session$userData$page <- "home"
+      output$active_left_sidebar <- renderUI(APP_LSIDE_homepage(input, output, session))
+      output$active_page <- renderUI(APP_PAGE_homepage(input, output, session))
+      runjs("Shiny.setInputValue('search', Math.random())")
+    }
+  })
+  
   output$mobile_footer <- renderUI(
     if (is_device_mobile()) {
       runjs("$('#content').css('height', '92vh')")
@@ -56,11 +72,11 @@ server <- function(input, output, session) {
       runjs("$('.content-responsive').css('padding-right', '0')")
       div(
         class = "mobile-footer",
-        a(href = "#", onclick = shinyOnClick("back"), icon("arrow-left")),
-        a(href = "#", onclick = shinyOnClick("homepage"), icon("home")),
-        a(href = "#", onclick = shinyOnClick("search"), icon("search")),
-        a(href = "#", onclick = shinyOnClick("create"), icon("plus")),
-        a(href = "#", onclick = shinyOnClick("profile"), icon("user-circle"))
+        a(onclick = shinyOnClick("back"), icon("arrow-left")),
+        a(onclick = shinyOnClick("homepage"), icon("home")),
+        a(onclick = shinyOnClick("search"), icon("search")),
+        a(onclick = shinyOnClick("create"), icon("plus")),
+        a(onclick = shinyOnClick("profile"), icon("user-circle"))
       )
     }
   )
