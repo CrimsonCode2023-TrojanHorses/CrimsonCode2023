@@ -1,6 +1,8 @@
 library(shiny)
 library(shinybrowser)
 library(shinyjs)
+library(DT)
+library(tibble)
 
 ui <- fluidPage(
   useShinyjs(),
