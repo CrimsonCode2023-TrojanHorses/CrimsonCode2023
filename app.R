@@ -7,7 +7,7 @@ ui <- fluidPage(
   detect(),
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "mainstyle.css"),
-    tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0")
+    tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
   ),
   
   {

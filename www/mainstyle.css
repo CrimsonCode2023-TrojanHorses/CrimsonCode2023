@@ -152,6 +152,8 @@ html {
 
 .recipe img {
   width: 100%;
+  border: 2px solid black;
+  filter: drop-shadow(2px 5px 5px #777777);
 }
 
 .profile-content {
