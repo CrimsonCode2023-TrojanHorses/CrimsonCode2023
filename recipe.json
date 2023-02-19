@@ -1,0 +1,23 @@
+[
+    {
+        "username" : "joe",
+        "title" : "Pepper Poppers",
+        "rating" : 5,
+        "nutrition" : 450,
+        "description" : "insert procedure"
+    },
+    {
+        "username" : "billy",
+        "title" : "hot dogs",
+        "rating" : 3.4,
+        "nutrition" : 200,
+        "description" : "insert procedure"
+    },
+    {
+        "username" : "cody",
+        "title" : "taco",
+        "rating" : 5,
+        "nutrition" : 800,
+        "description" : "insert procedure"
+    }
+]
