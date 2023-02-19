@@ -66,10 +66,10 @@ APP_LSIDE_homepage <- function(input, output, session) {
   div(
     class = auto_mobile("left-sidebar-responsive"),
     div(
-      h1("Filter"),
+      h1("Search"),
       class = auto_mobile("filter-pane"),
       textInput("searchterm", "", placeholder = "Search..."),
-      actionButton("apply_filters", "Apply Filters")
+      actionButton("apply_filters", "Search")
     )
   )
 }

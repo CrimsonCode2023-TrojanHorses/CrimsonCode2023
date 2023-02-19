@@ -58,7 +58,7 @@ server <- function(input, output, session) {
     if (is_device_desktop()) {
       div(
         class = "desktop-header",
-        h3("Food Finder", style = "margin: auto; color: var(--theme-verylight);")
+        h3("RandomRecipe", style = "margin: auto; color: var(--theme-verylight);")
       )
     }
   )
