@@ -12,8 +12,6 @@ def getRandomRecipe():
         count += 1
     rnum = math.floor((random.random() * 1000) % count)
     return dataList[rnum]
-
-getRandomRecipe()
     
 
     

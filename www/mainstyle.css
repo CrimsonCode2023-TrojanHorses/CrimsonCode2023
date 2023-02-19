@@ -280,3 +280,16 @@ html {
   width: 70%;
   padding: 10px;
 }
+
+.create-content {
+  background-color: var(--theme-verylight);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  min-height: 100vh;
+}
+
+.create-content .form-group {
+  width: auto;
+}

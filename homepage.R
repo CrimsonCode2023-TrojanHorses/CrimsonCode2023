@@ -1,23 +1,24 @@
 generate_recipes <- function(num) {
   lapply(seq_len(num), function(n) {
-    # TODO: get random new recipe
+    datapy <- reticulate::py_run_file("data.py")
+    recipe <- datapy$getRandomRecipe()
     div(
       class = "recipe",
       img(src = "placeholder-recipe.png"),
       div(
         style = "display: flex;",
-        h3("Title"),
+        h3(recipe$title),
         div(
           style = "margin-left: auto; padding-top: 15px;",
-          icon("star"),
-          icon("star"),
-          icon("star"),
-          icon("star"),
-          icon("star-half")
+          if (recipe$rating >= 1) icon("star"),
+          if (recipe$rating >= 2) icon("star"),
+          if (recipe$rating >= 3) icon("star"),
+          if (recipe$rating >= 4) icon("star"),
+          if (recipe$rating >= 5) icon("star")
         )
       ),
-      p("Author"),
-      p("Short-desc")
+      p(paste0("Author: @", recipe$username)),
+      p(recipe$shortdesc)
     )
   })
 }
@@ -77,6 +78,12 @@ APP_RSIDE_mainnav <- function(input, output, session) {
     session$userData$page <- "home"
     output$active_left_sidebar <- renderUI(APP_LSIDE_homepage(input, output, session))
     output$active_page <- renderUI(APP_PAGE_homepage(input, output, session))
+  })
+  
+  observeEvent(input$create, {
+    session$userData$page <- "create"
+    output$active_left_sidebar <- renderUI(APP_LSIDE_create(input, output, session))
+    output$active_page <- renderUI(APP_PAGE_create(input, output, session))
   })
   
   observeEvent(input$debug, {

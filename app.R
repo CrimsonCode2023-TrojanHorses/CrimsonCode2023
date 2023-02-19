@@ -14,6 +14,7 @@ ui <- fluidPage(
     source("utils.R")
     source("homepage.R")
     source("profile.R")
+    source("create.R")
     NULL
   },
   
@@ -29,6 +30,9 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  reticulate::virtualenv_create("venv")
+  reticulate::use_virtualenv("venv")
+
   session$userData$username <- "chezbigjohn"
   session$userData$name <- "John Doe"
   session$userData$email <- "johndoe@email.com"
