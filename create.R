@@ -56,7 +56,7 @@ APP_PAGE_create <- function(input, output, session) {
       h1("Post a Recipe"),
       textInput("recipe_title", "Title"),
       textInput("recipe_shortdesc", "Short Description"),
-      numericInput("recipe_calories", "Calories"),
+      numericInput("recipe_calories", "Calories", value = 0),
       textAreaInput("recipe_description", "Description"),
       "Ingredients",
       DTOutput("recipe_ingredients"),

@@ -1,7 +1,8 @@
-generate_recipes <- function(num) {
+generate_recipes <- function(session, num) {
   lapply(seq_len(num), function(n) {
-    datapy <- reticulate::py_run_file("data.py")
-    recipe <- datapy$getRandomRecipe()
+    recipe <- session$userData$datapy$getRandomRecipe()
+    if (is.null(recipe$key))
+      return(NULL)
     div(
       class = "recipe",
       img(src = "placeholder-recipe.png"),
@@ -28,9 +29,11 @@ APP_PAGE_homepage <- function(input, output, session) {
     insertUI(
       selector = "#end",
       where = "beforeBegin",
-      ui = generate_recipes(5)
+      ui = generate_recipes(session, 5)
     )
   })
+  
+  session$userData$datapy$trash <- list()
   
   div(
     class = auto_mobile("content-responsive"),
@@ -42,11 +45,15 @@ APP_PAGE_homepage <- function(input, output, session) {
         h2("Try Something New", style = "padding: 0; margin: 0")
       ),
       br(),
-      generate_recipes(5),
+      generate_recipes(session, 5),
       div(id = "end"),
       br(),
       br(),
       p("Sorry, looks like there's nothing else here...", style = "text-align: center;"),
+      br(),
+      br(),
+      br(),
+      br(),
       br(),
       br(),
       br(),

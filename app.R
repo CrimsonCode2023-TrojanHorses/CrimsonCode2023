@@ -32,8 +32,11 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  reticulate::virtualenv_create("venv")
-  reticulate::use_virtualenv("venv")
+  if (!reticulate::py_available()) {
+    reticulate::virtualenv_create("venv")
+    reticulate::use_virtualenv("venv")
+  }
+  session$userData$datapy <- reticulate::py_run_file("data.py")
 
   session$userData$username <- "chezbigjohn"
   session$userData$name <- "John Doe"
