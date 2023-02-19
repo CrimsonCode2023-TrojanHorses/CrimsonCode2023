@@ -24,6 +24,9 @@ html {
 }
 
 .mobile-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 8vh;
   display: flex;
@@ -66,6 +69,14 @@ html {
 
 .sidebar-link h3 {
   margin: auto;
+}
+
+.user-fullname {
+  font-weight: bold;
+}
+
+.username {
+  
 }
 
 .content-responsive {
@@ -160,4 +171,78 @@ html {
   background-color: var(--theme-verylight);
   padding: 10px;
   min-height: 100vh;
+}
+
+.profile-banner {
+  width: 100%;
+}
+
+.profile-top-container {
+  height: min-content;
+}
+
+.profile-info-container {
+  padding-left: 10%;
+}
+
+.profile-info {
+  width: min-content;
+  text-align: center;
+  position: relative;
+  top: -25px;
+}
+
+.profile-info img {
+  height: 80px;
+}
+
+.profile-follow {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  position: relative;
+  top: -55px;
+}
+
+.profile-following {
+  padding-right: 50px;
+}
+
+.profile-followers {
+  padding-right: 30px;
+}
+
+.profile-option-tabs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-option {
+  width: 100%;
+  border: 1px solid black;
+  text-align: center;
+  background-color: var(--theme-color);
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px 2px #777777);
+}
+
+.profile-option:hover {
+  background-color: var(--theme-light);
+}
+
+.profile-option-pane {
+  background-color: white;
+}
+
+.profile-settings-left {
+  width: 30%;
+  height: 100%;
+  background-color: #eeeeee;
+}
+
+.profile-settings-menu {
+  width: 100%;
+  padding-top: 20px;
+  padding-left: 10%;
+  text-align: left;
 }

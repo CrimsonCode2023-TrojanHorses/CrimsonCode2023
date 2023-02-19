@@ -4,12 +4,11 @@ generate_recipes <- function(num) {
     div(
       class = "recipe",
       img(src = "placeholder-recipe.png"),
-      h3("Title"),
       div(
         style = "display: flex;",
-        p("Author"),
+        h3("Title"),
         div(
-          style = "margin-left: auto",
+          style = "margin-left: auto; padding-top: 15px;",
           icon("star"),
           icon("star"),
           icon("star"),
@@ -17,6 +16,7 @@ generate_recipes <- function(num) {
           icon("star-half")
         )
       ),
+      p("Author"),
       p("Short-desc")
     )
   })

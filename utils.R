@@ -18,8 +18,8 @@ APP_UTIL_userCard <- function(session) {
     img(class = "usericon", src = "user-circle.svg"),
     div(
       class = "userinfo",
-      p("User Name"),
-      p("Points? Email?")
+      p("John Doe", class = "user-fullname"),
+      p("@chezbigjohn", class = "username")
     )
   )
 }

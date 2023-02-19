@@ -18,6 +18,7 @@ ui <- fluidPage(
   },
   
   uiOutput("desktop_header"),
+  uiOutput("mobile_footer"),
   div(
     id = "content",
     style = "display: flex; overflow: hidden;",
@@ -25,7 +26,6 @@ ui <- fluidPage(
     uiOutput("active_page", style = "display: flex; width: 100%; height: 100vh"),
     uiOutput("active_right_sidebar", style = "display: flex; float: right")
   ),
-  uiOutput("mobile_footer"),
 )
 
 server <- function(input, output, session) {
