@@ -1,8 +1,8 @@
-auto_mobile <- function(id) {
+auto_mobile <- function(class) {
   if (is_device_mobile()) {
-    paste(id, "mobile")
+    paste(class, "mobile")
   } else {
-    id
+    class
   }
 }
 
@@ -13,13 +13,12 @@ shinyOnClick <- function(id) {
 APP_UTIL_userCard <- function(session) {
   a(
     onclick = shinyOnClick("profile"),
-    href = "#",
     class = "usercard",
     img(class = "usericon", src = "user-circle.svg"),
     div(
       class = "userinfo",
-      p("User Name"),
-      p("Points? Email?")
+      p(session$userData$name, class = "user-fullname"),
+      p(paste0("@", session$userData$username), class = "username")
     )
   )
 }
